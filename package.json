@@ -4,7 +4,8 @@
   "description": "choose your adventure game",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --mode=development"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/wrightet/life_of_tim/issues"
   },
-  "homepage": "https://github.com/wrightet/life_of_tim#readme"
+  "homepage": "https://github.com/wrightet/life_of_tim#readme",
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0"
+  }
 }
