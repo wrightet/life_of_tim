@@ -1,29 +1,34 @@
 {
   "name": "life_of_tim",
   "version": "1.0.0",
-  "description": "choose your adventure game",
-  "main": "index.js",
+  "description": "",
+  "main": "bundle.js",
+  "dependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode=development"
+    "start": "webpack --mode=development --watch",
+    "production": "webpack --mode=production",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wrightet/life_of_tim.git"
   },
-  "author": "Ethan Wright",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wrightet/life_of_tim/issues"
   },
-  "homepage": "https://github.com/wrightet/life_of_tim#readme",
-  "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-react": "^7.9.4",
-    "babel-loader": "^8.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "webpack-cli": "^3.3.12"
-  }
+  "homepage": "https://github.com/wrightet/life_of_tim#readme"
 }
