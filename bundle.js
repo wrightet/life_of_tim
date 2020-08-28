@@ -169,10 +169,18 @@ var Game = /*#__PURE__*/function (_React$Component) {
       pages: _choices__WEBPACK_IMPORTED_MODULE_1__["pages"],
       choices: _choices__WEBPACK_IMPORTED_MODULE_1__["choices"]
     };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Game, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault(); // this.setState({pages: e})
+
+      console.log(e);
+    }
+  }, {
     key: "render",
     value: function render() {
       console.log('pages', _choices__WEBPACK_IMPORTED_MODULE_1__["pages"]);
@@ -180,10 +188,17 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var count = 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "game"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.pages[this.state.page]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.choices[this.state.page].map(function (choice) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.pages[this.state.page]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, this.state.choices[this.state.page].map(function (choice) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: count++
-        }, Object.keys(choice));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "radio",
+          value: Object.values(choice)
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: ""
+        }, Object.keys(choice)));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit"
       })));
     }
   }]);

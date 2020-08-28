@@ -9,7 +9,14 @@ class Game extends React.Component{
             pages: pages,
             choices: choices
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
         
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        // this.setState({pages: e})
+        console.log(e)
     }
 
     render(){
@@ -20,11 +27,17 @@ class Game extends React.Component{
             <div className='game'>
                 <p>{this.state.pages[this.state.page]}</p>
 
-                <ul>
+              
+
+                <form>
                     {this.state.choices[this.state.page].map(choice => (
-                        <li key={count++}>{Object.keys(choice)}</li>
+                        <div key={count++} >
+                            <input type="radio"value={Object.values(choice)}/>
+                            <label htmlFor="">{Object.keys(choice)}</label>
+                        </div>
                     ))}
-                </ul>
+                    <input type="submit"/>
+                </form>
             </div>
         )
        
