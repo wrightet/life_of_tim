@@ -86,6 +86,30 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/choices.js":
+/*!*****************************!*\
+  !*** ./frontend/choices.js ***!
+  \*****************************/
+/*! exports provided: pages, choices */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pages", function() { return pages; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choices", function() { return choices; });
+var pages = {
+  1: 'this is a test'
+};
+var choices = {
+  1: [{
+    'yes': 2
+  }, {
+    'no': 3
+  }]
+};
+
+/***/ }),
+
 /***/ "./frontend/game.jsx":
 /*!***************************!*\
   !*** ./frontend/game.jsx ***!
@@ -97,6 +121,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _choices__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./choices */ "./frontend/choices.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -121,15 +146,22 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Game = /*#__PURE__*/function (_React$Component) {
   _inherits(Game, _React$Component);
 
   var _super = _createSuper(Game);
 
   function Game(props) {
+    var _this;
+
     _classCallCheck(this, Game);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      page: 1
+    };
+    return _this;
   }
 
   _createClass(Game, [{
@@ -137,7 +169,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "game"
-      }, "This is the game");
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, _choices__WEBPACK_IMPORTED_MODULE_1__["pages"][this.state]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, _choices__WEBPACK_IMPORTED_MODULE_1__["choices"][this.state].map(function (choice) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, Object.keys(choice));
+      })));
     }
   }]);
 
