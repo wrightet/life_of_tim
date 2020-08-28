@@ -98,13 +98,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pages", function() { return pages; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choices", function() { return choices; });
 var pages = {
-  1: 'this is a test'
+  1: 'this is a test',
+  2: 'this is an updated test'
 };
 var choices = {
   1: [{
     'yes': 2
   }, {
     'no': 3
+  }],
+  2: [{
+    'nope': 4
+  }, {
+    'yup': 5
   }]
 };
 
@@ -145,7 +151,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-
+ // import {pages} from './choices';
 
 var Game = /*#__PURE__*/function (_React$Component) {
   _inherits(Game, _React$Component);
@@ -159,7 +165,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      page: 1
+      page: 1,
+      pages: _choices__WEBPACK_IMPORTED_MODULE_1__["pages"],
+      choices: _choices__WEBPACK_IMPORTED_MODULE_1__["choices"]
     };
     return _this;
   }
@@ -167,10 +175,15 @@ var Game = /*#__PURE__*/function (_React$Component) {
   _createClass(Game, [{
     key: "render",
     value: function render() {
+      console.log('pages', _choices__WEBPACK_IMPORTED_MODULE_1__["pages"]);
+      console.log('choices', _choices__WEBPACK_IMPORTED_MODULE_1__["choices"]);
+      var count = 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "game"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, _choices__WEBPACK_IMPORTED_MODULE_1__["pages"][this.state]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, _choices__WEBPACK_IMPORTED_MODULE_1__["choices"][this.state].map(function (choice) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, Object.keys(choice));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.pages[this.state.page]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.choices[this.state.page].map(function (choice) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: count++
+        }, Object.keys(choice));
       })));
     }
   }]);
