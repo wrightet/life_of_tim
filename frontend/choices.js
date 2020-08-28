@@ -6,5 +6,8 @@ export const pages = {
 
 export const choices = {
     1: [{'yes': 2}, {'no': 3}],
-    2: [{'nope':4}, {'yup':5}]
+    2: [{'nope':4}, {'yup':5}],
+    3:[],
+    4:[],
+    5:[]
 };

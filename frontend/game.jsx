@@ -41,7 +41,7 @@ class Game extends React.Component{
                             <label htmlFor="">{Object.keys(choice)}</label>
                         </div>
                     ))}
-                    <input type="submit"/>
+                   
                 </form>
                 <button onClick={() => this.restart()}>Restart</button>
             </div>

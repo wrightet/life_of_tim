@@ -111,7 +111,10 @@ var choices = {
     'nope': 4
   }, {
     'yup': 5
-  }]
+  }],
+  3: [],
+  4: [],
+  5: []
 };
 
 /***/ }),
@@ -221,8 +224,6 @@ var Game = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           htmlFor: ""
         }, Object.keys(choice)));
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this3.restart();
