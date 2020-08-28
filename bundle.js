@@ -174,32 +174,60 @@ var Game = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Game, [{
+    key: "update",
+    value: function update() {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState({
+          page: e.target.value
+        });
+      };
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault(); // this.setState({pages: e})
-
+      // e.preventDefault();
+      // this.setState({pages: e})
       console.log(e);
+    }
+  }, {
+    key: "restart",
+    value: function restart() {
+      this.setState({
+        page: 1
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       console.log('pages', _choices__WEBPACK_IMPORTED_MODULE_1__["pages"]);
       console.log('choices', _choices__WEBPACK_IMPORTED_MODULE_1__["choices"]);
       var count = 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "game"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.pages[this.state.page]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, this.state.choices[this.state.page].map(function (choice) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.pages[this.state.page]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        value: this.state.page,
+        onSubmit: this.handleSubmit()
+      }, this.state.choices[this.state.page].map(function (choice) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: count++
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "radio",
-          value: Object.values(choice)
+          value: Object.values(choice),
+          onChange: _this3.update()
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           htmlFor: ""
         }, Object.keys(choice)));
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
-      })));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.restart();
+        }
+      }, "Restart"));
     }
   }]);
 
