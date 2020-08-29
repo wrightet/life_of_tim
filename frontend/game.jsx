@@ -32,7 +32,7 @@ class Game extends React.Component{
         return(
             <div className='game'>
                 {this.state.pages[this.state.page].split('@').map(pageOn => (
-                    <p>{pageOn}</p>
+                    <p className='description'>{pageOn}</p>
                 ))}
 
               

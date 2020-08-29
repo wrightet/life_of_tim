@@ -1,0 +1,12 @@
+.description{
+    text-indent: 2em;
+    width: 70vw;
+    display: flex;
+   
+}
+
+.game{
+    margin-left:10vw;
+    margin-top:5vh;
+}
+
