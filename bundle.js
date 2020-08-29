@@ -396,7 +396,6 @@ var Game = /*#__PURE__*/function (_React$Component) {
       choices: _choices__WEBPACK_IMPORTED_MODULE_1__["choices"],
       checked: false
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleCheck = _this.handleCheck.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -411,13 +410,6 @@ var Game = /*#__PURE__*/function (_React$Component) {
           page: e.target.value
         });
       };
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      // e.preventDefault();
-      // this.setState({pages: e})
-      console.log(e);
     }
   }, {
     key: "handleCheck",
@@ -442,8 +434,6 @@ var Game = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      console.log('pages', _choices__WEBPACK_IMPORTED_MODULE_1__["pages"]);
-      console.log('choices', _choices__WEBPACK_IMPORTED_MODULE_1__["choices"]);
       var count = 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "game"

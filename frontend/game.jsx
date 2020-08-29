@@ -10,7 +10,7 @@ class Game extends React.Component{
             choices: choices,
             checked:false
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
+        
         this.handleCheck = this.handleCheck.bind(this);
         
     }
@@ -18,11 +18,8 @@ class Game extends React.Component{
     update(){
         return e => this.setState({page: e.target.value})
     }
-    handleSubmit(e){
-        // e.preventDefault();
-        // this.setState({pages: e})
-        console.log(e)
-    }
+
+
     handleCheck(){
         e => this.setState({checked: true})
     }
@@ -30,8 +27,7 @@ class Game extends React.Component{
         this.setState({page:1})
     }
     render(){
-        console.log('pages',pages)
-        console.log('choices',choices)
+     
         let count = 0
         return(
             <div className='game'>
