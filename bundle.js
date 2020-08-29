@@ -172,9 +172,23 @@ var choices = {
   }, {
     'Report Braxton': 7
   }],
-  5: [],
-  6: [],
-  7: [],
+  5: [{
+    'Tell hank off': 8
+  }, {
+    'Go cool off quietly in your cubicle': 9
+  }],
+  6: [{
+    'Invest it': 12
+  }, {
+    'Buy something nice': 13
+  }, {
+    'Pay off some debts': 14
+  }],
+  7: [{
+    'Yes I want the promotion': 37
+  }, {
+    'No way! Too much responsibility': 38
+  }],
   8: [],
   9: [],
   10: [],
