@@ -7,9 +7,11 @@ class Game extends React.Component{
         this.state = {
             page: 1,
             pages: pages,
-            choices: choices
+            choices: choices,
+            checked:false
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
         
     }
     
@@ -20,6 +22,9 @@ class Game extends React.Component{
         // e.preventDefault();
         // this.setState({pages: e})
         console.log(e)
+    }
+    handleCheck(){
+        e => this.setState({checked: true})
     }
     restart(){
         this.setState({page:1})
@@ -37,7 +42,7 @@ class Game extends React.Component{
                 <form value={this.state.page} onSubmit={this.handleSubmit()}>
                     {this.state.choices[this.state.page].map(choice => (
                         <div key={count++} >
-                            <input type="radio"value={Object.values(choice)} onChange={this.update()}/>
+                            <input type="radio"value={Object.values(choice)} checked={this.state.checked} onChange={this.update()} onClick={this.handleCheck()}/>
                             <label htmlFor="">{Object.keys(choice)}</label>
                         </div>
                     ))}

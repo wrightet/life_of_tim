@@ -279,9 +279,11 @@ var Game = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       page: 1,
       pages: _choices__WEBPACK_IMPORTED_MODULE_1__["pages"],
-      choices: _choices__WEBPACK_IMPORTED_MODULE_1__["choices"]
+      choices: _choices__WEBPACK_IMPORTED_MODULE_1__["choices"],
+      checked: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleCheck = _this.handleCheck.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -304,6 +306,17 @@ var Game = /*#__PURE__*/function (_React$Component) {
       console.log(e);
     }
   }, {
+    key: "handleCheck",
+    value: function handleCheck() {
+      var _this3 = this;
+
+      (function (e) {
+        return _this3.setState({
+          checked: true
+        });
+      });
+    }
+  }, {
     key: "restart",
     value: function restart() {
       this.setState({
@@ -313,7 +326,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       console.log('pages', _choices__WEBPACK_IMPORTED_MODULE_1__["pages"]);
       console.log('choices', _choices__WEBPACK_IMPORTED_MODULE_1__["choices"]);
@@ -329,13 +342,15 @@ var Game = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "radio",
           value: Object.values(choice),
-          onChange: _this3.update()
+          checked: _this4.state.checked,
+          onChange: _this4.update(),
+          onClick: _this4.handleCheck()
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           htmlFor: ""
         }, Object.keys(choice)));
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this3.restart();
+          return _this4.restart();
         }
       }, "Restart"));
     }
