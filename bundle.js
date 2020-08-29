@@ -269,19 +269,47 @@ var choices = {
   }, {
     'Walk out': 50
   }],
-  28: [],
-  29: [],
-  30: [],
+  28: [{
+    'Nothing. Nacho did not help you. Why help him?': 33
+  }, {
+    'Tackle the robber': 34
+  }],
+  29: [{
+    'Keep it quiet and take the money': 6
+  }, {
+    'Report Braxton': 7
+  }],
+  30: [{
+    'Seek out the Warlock Queen': 53
+  }, {
+    'Skip the training. You will figure it out on your own': 54
+  }],
   31: [],
-  32: [],
+  32: [{
+    'Nothing. Nacho did not help you. Why help him?': 33
+  }, {
+    'Tackle the robber': 34
+  }],
   33: [],
-  34: [],
+  34: [{
+    'Yes take the job': 35
+  }, {
+    'No thank you': 36
+  }],
   35: [],
   36: [],
-  37: [],
+  37: [{
+    "Make Kimberly's life suck": 47
+  }, {
+    "Look into a new client management system": 48
+  }],
   38: [],
   39: [],
-  40: [],
+  40: [{
+    'Yes take the deal': 22
+  }, {
+    'No deal. You are not a rat': 23
+  }],
   41: [],
   42: [],
   43: [],
