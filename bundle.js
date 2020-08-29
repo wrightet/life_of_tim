@@ -101,7 +101,7 @@ var pages = {
   1: 'Welcome to the life of Tim! A middle aged accountant from Syracuse, New York. The life is Tim’s but the choices are yours. Will Tim be ordinary? Or will he break the mold and be extraordinary? Only you can decide.',
   2: '9 minutes goes by, and once again BEEP! BEEP! BEEP! Do you snooze again? Or get up',
   3: 'You got your wish. You finally get to sleep all you want. In fact all you get to do is sleep. You had a brain aneurysm and died. So concludes the life of Tim.',
-  4: " Oh! You are a real go getter, aren’t you? Tim arrives at work exactly on time, just like he does every day. His boss Hank is sure to notice What is this? He did notice.Hank gives you the new account, Braxton, a large tech company that was just valued for a billion dollars.He tells you that if you do well with this one you are a shoe in for a promotion. Excited for the opportunity you quickly begin to carefully look over the account and you notice an anomaly.Each month 50 thousand dollars is making its way into an account called Tregor & Parson, but there is no record of Braxton receiving any services from them. You call Braxton and ask for their CFO and explain who you are.The Braxton CFO is a man named Larry Perry, an unfortunate name.Larry goes quiet when you explain what you have found, then he says, I will tell you what.Tim you can fix it so that no one else finds this issue again and we will cut you ten grand a month.Or you can report us and see where that finds you.What do you do?",
+  4: " Oh! You are a real go getter, aren’t you? Tim arrives at work exactly on time, just like he does every day. His boss Hank is sure to notice What is this? He did notice.Hank gives you the new account, Braxton, a large tech company that was just valued for a billion dollars. He tells you that if you do well with this one you are a shoe in for a promotion. Excited for the opportunity you quickly begin to carefully look over the account and you notice an anomaly. Each month 50 thousand dollars is making its way into an account called Tregor & Parson, but there is no record of Braxton receiving any services from them. You call Braxton and ask for their CFO and explain who you are. The Braxton CFO is a man named Larry Perry, an unfortunate name. Larry goes quiet when you explain what you have found, then he says, I will tell you what. Tim you can fix it so that no one else finds this issue again and we will cut you ten grand a month. Or you can report us and see where that finds you. What do you do?",
   5: "You slept in for nine minutes and are thus, nine minutes late. If you had not slept in you would have been right on time. But we cannot fix that now, can we? Your boss Hank is furious, and says you are on thin ice, even though this is the first time you have been late ever. He tells you he was going to give you a new account, but now he is giving it to Kimberly, your arch nemesis, who you have hated since she stole your date, Liz, at the corporate Christmas party in 2005. And Kim is not even a good accountant. She made a mistake on her last account that got them audited by the IRS. This makes you very upset. What are you going to do?",
   6: "You do exactly that. You do not say anything. A week goes by and you suddenly get a phone call from an anonymous number. It tells you to look in the back seat of your car after work. And sure enough there is ten grand just as promised. That is almost twice what you make in a month. What are you going to do with this new found wealth? This makes you very upset.What are you going to do? ",
   7: 'You report  Braxton to the authorities immediately. Hank is slightly upset at the thought of losing such a large account, but he understands. You are just doing your job. Later that night you see that a raid has been conducted at Braxton and Larry has been arrested.You smile to yourself as you eat your meal of steamed vegetables. The next day you get up and go to work exactly on time, as always.As you come in you hear whispering.Hank is retiring and there is a chance that one of you will be promoted to manager.Do you want this promotion ?',
@@ -168,7 +168,7 @@ var choices = {
   }],
   3: [],
   4: [{
-    'keep it quiet and take the money': 6
+    'Keep it quiet and take the money': 6
   }, {
     'Report Braxton': 7
   }],
@@ -205,22 +205,70 @@ var choices = {
     'Sell it': 27
   }],
   11: [],
-  12: [],
-  13: [],
-  14: [],
-  15: [],
-  16: [],
+  12: [{
+    'Retire': 15
+  }, {
+    'Continue to invest. Why stop now?': 16
+  }],
+  13: [{
+    'Yes take the deal': 22
+  }, {
+    'No deal. You are not a rat.': 23
+  }],
+  14: [{
+    'Just pay for the little things': 39
+  }, {
+    'Launder the money': 40
+  }],
+  15: [{
+    'Right here in Syracuse': 17
+  }, {
+    'Fiji': 18
+  }, {
+    'Sedona, Arizona': 19
+  }],
+  16: [{
+    'Go into the office like nothing is wrong': 20
+  }, {
+    'Call in sick and lay low': 21
+  }],
   17: [],
   18: [],
   19: [],
-  20: [],
-  21: [],
+  20: [{
+    'Yes take the deal': 22
+  }, {
+    'No deal. You are not a rat': 23
+  }],
+  21: [{
+    'Stay home': 24
+  }, {
+    'Flee': 25
+  }],
   22: [],
   23: [],
   24: [],
-  25: [],
-  26: [],
-  27: [],
+  25: [{
+    'Go back': 43
+  }, {
+    'Find somewhere else': 44
+  }],
+  26: [{
+    'Wish for dry clothes. Yours are really wet': 28
+  }, {
+    'Wish for your job back': 29
+  }, {
+    'Wish for wizard powers like Dr.Strange': 30
+  }, {
+    'Wish for a billion dollars': 31
+  }, {
+    'Wish for the genie to go back into the lamp': 32
+  }],
+  27: [{
+    'Tackle the robber': 49
+  }, {
+    'Walk out': 50
+  }],
   28: [],
   29: [],
   30: [],
