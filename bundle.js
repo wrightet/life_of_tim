@@ -189,9 +189,21 @@ var choices = {
   }, {
     'No way! Too much responsibility': 38
   }],
-  8: [],
-  9: [],
-  10: [],
+  8: [{
+    'Wait': 10
+  }, {
+    'Cross anyway': 11
+  }],
+  9: [{
+    'Snoop on Kimberly': 41
+  }, {
+    'Mind your own business': 42
+  }],
+  10: [{
+    'Rub the lamp': 26
+  }, {
+    'Sell it': 27
+  }],
   11: [],
   12: [],
   13: [],
