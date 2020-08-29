@@ -31,7 +31,9 @@ class Game extends React.Component{
         let count = 0
         return(
             <div className='game'>
-                <p>{this.state.pages[this.state.page]}</p>
+                {this.state.pages[this.state.page].split('@').map(pageOn => (
+                    <p>{pageOn}</p>
+                ))}
 
               
 
