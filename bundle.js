@@ -445,8 +445,10 @@ var Game = /*#__PURE__*/function (_React$Component) {
         value: this.state.page
       }, this.state.choices[this.state.page].map(function (choice) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: count++
+          key: count++,
+          className: "options-div"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "options",
           type: "radio",
           value: Object.values(choice),
           checked: _this4.state.checked,

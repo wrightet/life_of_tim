@@ -17,3 +17,16 @@ body{
 background-color: black;
 }
 
+.options{
+    width: 5vw;
+    
+}
+.options:hover{
+    cursor: pointer;
+    color: red;
+    width: 5vw;
+}
+
+/* .options-div:hover{
+    color:blue;
+} */

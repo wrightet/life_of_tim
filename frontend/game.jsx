@@ -39,8 +39,8 @@ class Game extends React.Component{
 
                 <form value={this.state.page} >
                     {this.state.choices[this.state.page].map(choice => (
-                        <div key={count++} >
-                            <input type="radio"value={Object.values(choice)} checked={this.state.checked} onChange={this.update()} onClick={this.handleCheck()}/>
+                        <div key={count++} className='options-div' >
+                            <input className='options' type="radio"value={Object.values(choice)} checked={this.state.checked} onChange={this.update()} onClick={this.handleCheck()}/>
                             <label htmlFor="">{Object.keys(choice)}</label>
                         </div>
                     ))}
