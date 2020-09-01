@@ -3,10 +3,17 @@
     width: 70vw;
     display: flex;
    
+   
 }
 
 .game{
     margin-left:10vw;
     margin-top:5vh;
+     font-size: 26px;
+    color:white;
+}
+
+body{
+background-color: navy;
 }
 
