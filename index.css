@@ -29,6 +29,10 @@ header {
     display: flex;
     justify-content: flex-end;
     margin-top: 75vh;
+    border-top: 2px solid green;
+    padding-top: 5vh;
+    padding-bottom: 3vh;
+    padding-right: 5vw;
 }
 .options{
     width: 5vw;
@@ -38,6 +42,4 @@ header {
     cursor: pointer;
 }
 
-/* .options-div:hover{
-    color:blue;
-} */
+
