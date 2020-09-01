@@ -20,6 +20,16 @@ header {
     justify-content: center;
     /* flex-direction: column;     */
 }
+
+.footer-div > a{
+    color: green;
+    padding-left: 2vw;
+}
+.footer-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 75vh;
+}
 .options{
     width: 5vw;
     
