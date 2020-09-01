@@ -23,8 +23,8 @@ background-color: black;
 }
 .options:hover{
     cursor: pointer;
-    color: red;
-    width: 5vw;
+    
+    
 }
 
 /* .options-div:hover{
