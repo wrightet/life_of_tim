@@ -2,29 +2,30 @@
     text-indent: 2em;
     width: 70vw;
     display: flex;
-   
-   
 }
 
 .game{
     margin-left:10vw;
     margin-top:5vh;
-     font-size: 26px;
+    font-size: 26px;
     color:green;
 }
 
 body{
-background-color: black;
+    background-color: black;
 }
-
+header {
+    color: green;
+    display:flex;
+    justify-content: center;
+    /* flex-direction: column;     */
+}
 .options{
     width: 5vw;
     
 }
 .options:hover{
     cursor: pointer;
-    
-    
 }
 
 /* .options-div:hover{
