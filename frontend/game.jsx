@@ -1,57 +1,72 @@
 import React from 'react';
-import {choices, pages} from './choices';
-// import {pages} from './choices';
-class Game extends React.Component{
+
+class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             page: 1,
-            pages: pages,
-            choices: choices,
-            checked:false
+        };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.activeGame !== this.props.activeGame) {
+            this.setState({ page: 1 });
         }
-        
-        this.handleCheck = this.handleCheck.bind(this);
-        
-    }
-    
-    update(){
-        return e => this.setState({page: e.target.value})
     }
 
+    update(next) {
+        this.setState({ page: next });
+        window.scrollTo(0, 0);
+    }
 
-    handleCheck(){
-        e => this.setState({checked: true})
+    restart() {
+        this.setState({ page: 1 });
+        window.scrollTo(0, 0);
     }
-    restart(){
-        this.setState({page:1})
-    }
-    render(){
-     
-        let count = 0
-        return(
+
+    render() {
+        const { story, otherGame, onSwitchGame } = this.props;
+        const current = story[this.state.page];
+        const isEnding = current.choices.length === 0;
+        const otherGameLabel = otherGame === 'howard' ? 'The Life of Howard' : 'The Life of Tim';
+
+        return (
             <div className='game'>
-                {this.state.pages[this.state.page].split('@').map(pageOn => (
-                    <p className='description'>{pageOn}</p>
+                <div className='game-header'>
+                    <h4>By Ethan Wright</h4>
+                </div>
+
+                {current.text.split('@').map((paragraph, i) => (
+                    <p key={i} className='description'>{paragraph}</p>
                 ))}
 
-              
-
-                <form value={this.state.page} >
-                    {this.state.choices[this.state.page].map(choice => (
-                        <div key={count++} className='options-div' >
-                            <input className='options' type="radio"value={Object.values(choice)} checked={this.state.checked} onChange={this.update()} onClick={this.handleCheck()}/>
-                            <label htmlFor="">{Object.keys(choice)}</label>
-                        </div>
+                <div className='choices'>
+                    {current.choices.map((choice, i) => (
+                        <button
+                            key={i}
+                            className='choice-btn'
+                            onClick={() => this.update(choice.next)}
+                        >
+                            {choice.label}
+                        </button>
                     ))}
-                   
-                </form>
-                <button onClick={() => this.restart()}>Restart</button>
+
+                    {isEnding && (
+                        <button
+                            className='choice-btn switch-btn'
+                            onClick={() => onSwitchGame(otherGame)}
+                        >
+                            Play {otherGameLabel}
+                        </button>
+                    )}
+                </div>
+
+                <button className='restart-btn' onClick={() => this.restart()}>
+                    Restart
+                </button>
             </div>
-        )
-       
+        );
     }
-    
 }
 
 export default Game;
