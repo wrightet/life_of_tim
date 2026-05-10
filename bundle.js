@@ -86,41 +86,206 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./frontend/choices.js":
-/*!*****************************!*\
-  !*** ./frontend/choices.js ***!
-  \*****************************/
-/*! exports provided: pages, choices */
+/***/ "./frontend/game.jsx":
+/*!***************************!*\
+  !*** ./frontend/game.jsx ***!
+  \***************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+var LETTERS = 'ABCDE';
+
+var Game = /*#__PURE__*/function (_React$Component) {
+  _inherits(Game, _React$Component);
+
+  var _super = _createSuper(Game);
+
+  function Game(props) {
+    var _this;
+
+    _classCallCheck(this, Game);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      page: 1
+    };
+    _this.handleChoice = _this.handleChoice.bind(_assertThisInitialized(_this));
+    _this.restart = _this.restart.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Game, [{
+    key: "handleChoice",
+    value: function handleChoice(nextPage) {
+      this.setState({
+        page: nextPage
+      });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }, {
+    key: "restart",
+    value: function restart() {
+      this.setState({
+        page: 1
+      });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          pages = _this$props.pages,
+          choices = _this$props.choices,
+          nextStoryTitle = _this$props.nextStoryTitle,
+          onComplete = _this$props.onComplete,
+          prevStoryTitle = _this$props.prevStoryTitle,
+          onPrev = _this$props.onPrev;
+      var page = this.state.page;
+      var pageChoices = choices[page];
+      var hasChoices = pageChoices && pageChoices.length > 0;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "game"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "story-text"
+      }, pages[page].split('@').map(function (paragraph, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          key: i,
+          className: "description"
+        }, paragraph.trim());
+      })), hasChoices && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choices-section"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "choices-prompt"
+      }, "> YOUR MOVE:"), pageChoices.map(function (choice, i) {
+        var label = Object.keys(choice)[0];
+        var nextPage = Number(Object.values(choice)[0]);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: i,
+          className: "option-btn",
+          onClick: function onClick() {
+            return _this2.handleChoice(nextPage);
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "option-letter"
+        }, "[", LETTERS[i], "]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "option-text"
+        }, label));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "action-btns"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "restart-btn",
+        onClick: this.restart
+      }, "[ RESTART ]"), !hasChoices && onComplete && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "next-story-btn",
+        onClick: onComplete
+      }, "[ START: ", nextStoryTitle.toUpperCase(), " ]"), onPrev && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "prev-story-btn",
+        onClick: onPrev
+      }, "[ BACK: ", prevStoryTitle.toUpperCase(), " ]")));
+    }
+  }]);
+
+  return Game;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Game);
+
+/***/ }),
+
+/***/ "./frontend/stories/lifeOfHoward.js":
+/*!******************************************!*\
+  !*** ./frontend/stories/lifeOfHoward.js ***!
+  \******************************************/
+/*! exports provided: title, pages, choices */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "title", function() { return title; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pages", function() { return pages; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choices", function() { return choices; });
+var title = 'The Life of Howard';
 var pages = {
-  1: 'Welcome to the life of Tim! A middle aged accountant from Syracuse, New York. The life is Tim’s but the choices are yours. Will Tim be ordinary? Or will he break the mold and be extraordinary? Only you can decide.@ Beep! Beep! Beep! Ut Oh, looks like Tim’s alarm is going off. What are you going to do?',
+  1: 'Coming soon — The Life of Howard.'
+};
+var choices = {
+  1: []
+};
+
+/***/ }),
+
+/***/ "./frontend/stories/lifeOfTim.js":
+/*!***************************************!*\
+  !*** ./frontend/stories/lifeOfTim.js ***!
+  \***************************************/
+/*! exports provided: title, pages, choices */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "title", function() { return title; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pages", function() { return pages; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "choices", function() { return choices; });
+var title = 'The Life of Tim';
+var pages = {
+  1: 'Welcome to the life of Tim! A middle aged accountant from Syracuse, New York. The life is Tim\'s but the choices are yours. Will Tim be ordinary? Or will he break the mold and be extraordinary? Only you can decide.@ Beep! Beep! Beep! Ut Oh, looks like Tim\'s alarm is going off. What are you going to do?',
   2: '9 minutes goes by, and once again BEEP! BEEP! BEEP! Do you snooze again? Or get up?',
   3: 'You got your wish. You finally get to sleep all you want. In fact all you get to do is sleep. You had a brain aneurysm and died. So concludes the life of Tim.',
-  4: " Oh! You are a real go getter, aren’t you? Tim arrives at work exactly on time, just like he does every day. His boss Hank is sure to notice!@ What is this? He did notice. Hank gives you the new account, Braxton, a large tech company that was just valued for a billion dollars. He tells you that if you do well with this one you are a shoe in for a promotion.@ Excited for the opportunity you quickly begin to carefully look over the account and you notice an anomaly. Each month 50 thousand dollars is making its way into an account called Tregor & Parson, but there is no record of Braxton receiving any services from them.@ You call Braxton and ask for their CFO and explain who you are. The Braxton CFO is a man named Larry Perry, an unfortunate name. Larry goes quiet when you explain what you have found, then he says, I will tell you what. Tim you can fix it so that no one else finds this issue again and we will cut you ten grand a month. Or you can report us and see where that finds you. What do you do?",
+  4: " Oh! You are a real go getter, aren't you? Tim arrives at work exactly on time, just like he does every day. His boss Hank is sure to notice!@ What is this? He did notice. Hank gives you the new account, Braxton, a large tech company that was just valued for a billion dollars. He tells you that if you do well with this one you are a shoe in for a promotion.@ Excited for the opportunity you quickly begin to carefully look over the account and you notice an anomaly. Each month 50 thousand dollars is making its way into an account called Tregor & Parson, but there is no record of Braxton receiving any services from them.@ You call Braxton and ask for their CFO and explain who you are. The Braxton CFO is a man named Larry Perry, an unfortunate name. Larry goes quiet when you explain what you have found, then he says, I will tell you what. Tim you can fix it so that no one else finds this issue again and we will cut you ten grand a month. Or you can report us and see where that finds you. What do you do?",
   5: "You slept in for nine minutes and are thus, nine minutes late. If you had not slept in you would have been right on time. But we cannot fix that now, can we?@ Your boss Hank is furious, and says you are on thin ice, even though this is the first time you have been late ever. He tells you he was going to give you a new account, but now he is giving it to Kimberly, your arch nemesis, who you have hated since she stole your date, Liz, at the corporate Christmas party in 2005. And Kim is not even a good accountant. She made a mistake on her last account that got them audited by the IRS.@ This makes you very upset. What are you going to do?",
   6: "You do exactly that. You do not say anything.@ A week goes by and you suddenly get a phone call from an anonymous number. It tells you to look in the back seat of your car after work. And sure enough there is ten grand just as promised.@ That is almost twice what you make in a month. What are you going to do with this new found wealth?",
   7: 'You report  Braxton to the authorities immediately. Hank is slightly upset at the thought of losing such a large account, but he understands. You are just doing your job.@ Later that night you see that a raid has been conducted at Braxton and Larry has been arrested. You smile to yourself as you eat your meal of steamed vegetables.@ The next day you get up and go to work exactly on time, as always. As you come in you hear whispering. @Hank is retiring and there is a chance that one of you will be promoted to manager.@ Do you want this promotion?',
-  8: "You scream at Hank and he takes a couple steps back. He has never heard your voice raise, let alone seen you angry. You really tear into him.You bring up how much you have done for the company, how you have never been late, all of Kimberly’s mistakes.@ Hank straightens himself out and says, that you should have thought of the consequences when you decided to sleep in.@ Now you are furious and go for the jugular.You tell Hank he should have thought of the consequences when he decided to be such a miserable ass that not even his wife could stand. Hank's wife recently left him, and you knew he still kept a picture of her on his desk.@ Hank begins to cry, wipes his tears on his sleeve, and tells you to go collect your things. You are fired.@ Tim always kept his cubicle nice so it is not hard to pack. Kimberly peeks her head over her cubicle and gives you the finger.@ You walk out with your stuff and decide that you’ll go for a walk by Onondaga Lake. To get there you need to cross a busy intersection but it does not look like any cars are coming. Do you wait for safe to cross light comes on? Or cross anyway?",
+  8: "You scream at Hank and he takes a couple steps back. He has never heard your voice raise, let alone seen you angry. You really tear into him.You bring up how much you have done for the company, how you have never been late, all of Kimberly's mistakes.@ Hank straightens himself out and says, that you should have thought of the consequences when you decided to sleep in.@ Now you are furious and go for the jugular.You tell Hank he should have thought of the consequences when he decided to be such a miserable ass that not even his wife could stand. Hank's wife recently left him, and you knew he still kept a picture of her on his desk.@ Hank begins to cry, wipes his tears on his sleeve, and tells you to go collect your things. You are fired.@ Tim always kept his cubicle nice so it is not hard to pack. Kimberly peeks her head over her cubicle and gives you the finger.@ You walk out with your stuff and decide that you'll go for a walk by Onondaga Lake. To get there you need to cross a busy intersection but it does not look like any cars are coming. Do you wait for safe to cross light comes on? Or cross anyway?",
   9: "You head off to your cubicle and begin to work on a cash flow. As you are crunching away at the numbers you hear Kimberly excitedly talking to someone from Braxton. After she hangs up the phone she cheers loudly that she is going to be rich.@ You start to fume. Kimberly is the worst. It could have been you getting rich. Wait, you think, how is she getting rich?@ You do not make any more money from getting a new account. A new account is just a stepping stone to a promotion if you handle it well. So how is she making money? What do you do?",
   10: "You wait and when the walk sign lights up, you cross safely.@ As you walk along the lake you notice something in the water. It is shiny and gold. You step into the water even though you are fully clothed and pick it up.@ It is a lamp just like the one Alladin found in Arabian Nights.@ Do you rub it? Or try to sell it?",
   11: "When you are halfway across the intersection, a Nissan Sentra comes flying down the road, and plows into you. It does not even stop. Tim flips clear over the car and is dead before he hit the ground. So concludes the life of Tim.",
   12: "Tim knows exactly how he is going to invest. He had been making hypothetical stock portfolios on Yahoo Finance for years.@ In just one month you turned 10 grand into 100 grand. And that is not even counting the other 10 grand you received from Braxton in that time.@ You reinvests all of it and soon have over a million dollars. You can easily retire if you want.@ What do you do?",
   13: "Boy oh boy do you buy something nice. Really nice in fact.@ You buy some shoes for your grandma who is super old. She does like the shoes and says they are real nice. You also get one of those little bird statues that bobs and drinks water for your desk.@ Oh, and Tim also buys a corvette. You pay all $9900 of the down payment in cash. You love the car and show it off to everyone. Kimberly is jealous and knows she makes more money than you. So, how did you afford the car?@ Her brother, Geoff works for the IRS and she convinces him to look into your affairs. After seeing that you bought a car with money that came from nowhere, they decide to audit you.@ You did not keep the receipt for the shoes, the bird, or the car, or really any receipts in general. So, you are pretty screwed.@ They charge you with tax evasion, but they still want to know where you got the money. They offer you a deal for less time if you tell them. @Do you?",
-  14: "You pay off your debts. Smart. Because you did not do anything flashy, no one is going to notice. Plus banks just want their money back. They do not really care where it comes from do they?@ You fly right under the radar. To everyone it just seems like you are a normal accountant. They have no idea that you are making an extra $120,000 a year tax free.@ Then you think about it again. Sure the banks probably won’t notice you paying off debts, but the IRS will. Especially if it becomes a pattern. So now you really have to get creative. @You can either just use the money to pay for little things and never put it in a bank, or figure out a way to launder it. Which will you do?",
+  14: "You pay off your debts. Smart. Because you did not do anything flashy, no one is going to notice. Plus banks just want their money back. They do not really care where it comes from do they?@ You fly right under the radar. To everyone it just seems like you are a normal accountant. They have no idea that you are making an extra $120,000 a year tax free.@ Then you think about it again. Sure the banks probably won't notice you paying off debts, but the IRS will. Especially if it becomes a pattern. So now you really have to get creative. @You can either just use the money to pay for little things and never put it in a bank, or figure out a way to launder it. Which will you do?",
   15: "You announce your retirement. Everyone is shocked. You can not have possibly collected enough in your 401K or your ROTH IRA.@ None the less you collect your sheet cake that Hank reluctantly provided and scurry on out of that place for ever.@ Where will you go to spend your retirement?",
   16: "Holy cow! You are making so much money!!! @Every stock you invest in just keeps going up. Tim now has millions of dollars.@ However you have been paying more attention to your stocks than to the Braxton account. Tim forgets to move some money between accounts. He tunes into the news that night and sees that Larry Perry, the Braxton CFO is being arrested for embezzlement, and that the Feds are looking for anyone with more information. What do you do?",
   17: "Tim spends the rest of his time in Syracuse just like he wanted. He plays poker on Tuesdays, Darts on Wednesdays, and on Thursdays he takes his cat, Mimsy, to the groomers. He does that for another 25 years coasting on his investments, and dies quietly in his sleep. So completes the life of Tim.",
-  18: "Tim heads off to Fiji where he meets a gorgeous woman named Susan. She also worked as an accountant and decided to retire to Fiji. @After dating for a short while they move in together and get married. Tim’s cat, Mimsy, is his best man, which Susan thinks is endearing. They spend the rest of their lives together. So concludes the life of Tim.",
+  18: "Tim heads off to Fiji where he meets a gorgeous woman named Susan. She also worked as an accountant and decided to retire to Fiji. @After dating for a short while they move in together and get married. Tim's cat, Mimsy, is his best man, which Susan thinks is endearing. They spend the rest of their lives together. So concludes the life of Tim.",
   19: "Tim heads to Sedona. You have been doing some reading and get really into crystals. There supposed to be a pretty large energy vortex there, to get your crystals charged. @After asking around a local tells you that a woman down the street charges crystals and aligns chakras. Tim opens the door and finds none other than Liz, the date that Kimberly stole. @She does not recognize you at first but after you go to pay for the crystal charging, and open your wallet she sees the old business card you have, and realizes who you are. She apologizes and admits that she was really after Kimberly the whole time. She just used you to get closer to her, and that that was wrong of her to do to you. You forgive her, and she invites you to stay with her and her friends.@ Her friends turn out to be involved in a cult. After a few months of hanging out with them you abandon your life as Tim and become Brother Husband 3, that is your name Brother Husband 3, to a woman named Francine. Liz is also married to Francine but not to you. @So concludes the life of Tim.",
   20: "You go into the office, and as you walk into your cubicle a man is sitting in your chair. He turns around and introduces himself as Special Agent Schwartz of the FBI. Another agent steps behind you and puts you in hand cuffs. Her name is Special Agent Weiss.@ They tell you that you are being arrested for money laundering and tax fraud. Then they offer you a deal if you testify against Larry Perry, the CFO of Braxton.@ Do you take the deal?",
   21: "You call in sick and Hank is super weird about it. He is oddly instant that you come in. Then he asks if you are going to be home all day. You tell him of course you are. You are supposed to be sick after all. Do you stay home or flee?",
   22: "You take the deal and testify in exchange for half the time in prison. As you are giving your testimony you see Larry mouth something to you. It looks a lot like he is saying, you are a dead man. But maybe you are mistaken? @On your first day of federal penitentiary you are introduced to your two cell mates, Curly and Moe.They seem like nice guys. Lights go out at 8 pm. And at 8:10pm Curly and Moe turn out not to be so nice. Moe holds you down while Curly holds a pillow over your face. He says, condolences from Larry.@ You kick and squirm but ultimately stop breathing. So ends the life of Tim.",
-  23: " Weiss and Schwartz are not happy. They assure you that you will be doing the maximum sentence. And they are right.@ The jury finds you guilty no problem.@ When you get to prison you find that Larry is your cellmate. He smiles as you walk in and thanks you for not ratting him out. To show his thanks he slips you an extra pudding cup.@ As time moves on you and Larry form a bond and become a couple. You get prison married and Larry’s friend Moe is a minister. He officates, and a man named Curly offers to be your best man. You all share a package of honey buns. Then go off to enjoy the rest of your wedding day together. You get released first and assure Larry that you will wait for him. He still has a few years to go on his sentence. You get a job at a moving company and a small apartment. Tim even manages to get his cat Mimsy back.@ Eventually Larry gets out and you two enjoy the rest of your life together, and both pass away peacefully in your sleep due to a carbon monoxide leak in the apartment. So concludes the life of Tim.",
+  23: " Weiss and Schwartz are not happy. They assure you that you will be doing the maximum sentence. And they are right.@ The jury finds you guilty no problem.@ When you get to prison you find that Larry is your cellmate. He smiles as you walk in and thanks you for not ratting him out. To show his thanks he slips you an extra pudding cup.@ As time moves on you and Larry form a bond and become a couple. You get prison married and Larry's friend Moe is a minister. He officates, and a man named Curly offers to be your best man. You all share a package of honey buns. Then go off to enjoy the rest of your wedding day together. You get released first and assure Larry that you will wait for him. He still has a few years to go on his sentence. You get a job at a moving company and a small apartment. Tim even manages to get his cat Mimsy back.@ Eventually Larry gets out and you two enjoy the rest of your life together, and both pass away peacefully in your sleep due to a carbon monoxide leak in the apartment. So concludes the life of Tim.",
   24: "You stay home. Hank is just upset that someone else is going to have to pick up your work, and with how short staffed the company has been it will be him. Yeah that is it. Hank just does not want to do your work. You keep the blinds closed and try to quietly watch TV.@ At around 5pm your phone rings and it is Hank again. You answer. They are coming, Hank says, You have to run. Just then there is a knock at the door.You answer and a man says Larry sends his condolences. Then he shoots you in the head.So ends the life of Tim.",
   25: "Hank asking if you would be home all day was too weird. And you do not think it was just you. Hank sounded scared. Something is up.@ You open the safe in your closet where you keep some extra cash and a .38 special revolver that you got from your dad when he passed away. Mr. Simmons across the hall is gone for the week and he asked you to water his plants, so you have a key.You cross the hall and stay at his place. Around 5 you get a call from Hank and he tells you they are coming for you and to run. You hear a knock from across the hall and look out the peep in the door. A man is knocking on your door and he has a gun sticking out the back of his pants.@ You open the door and ask, looking  for me ? As the man reaches for his gun and turns around, you shoot him in the head with your revolver. He hits the ground and you quickly rummage through his pants and find some car keys. Down in the parking lot you frantically press the unlock button. In front of you see a red VW Beetle flashing. An odd car for a hit man to drive you think.@ You speed away and drive as fast as you can for Canada. You get all the way to the border, before you realize that you forgot your passport. Do you go back for your passport? Or go somewhere else?",
   26: "You rub on the lamp and smoke starts to gently billow out of the spout. Then it suddenly gushes forth and turns a deep shade of red. The red smoke condenses into a genie.@He bellows, At last I am free! For you aide I will grant you a wish. You may not bring the dead back to life, wish for more wishes, or  more genies. What do you desire?",
@@ -137,23 +302,23 @@ var pages = {
   37: " You go for that promotion Tim! You interview for it and sure enough they give it to you. You are practically famous around the office after catching the shady stuff that Braxton was doing. You are now the Branch Manager! @Branch Manager Tim. I like how it sounds. What is your first order of business?",
   38: "You are right that is way too much work for you. You are a lot more comfortable with numbers than people.@ Unfortunately Kimberly does get the job and she is worse than Hank ever was. She makes sure that you get the worst accounts, and the least support possible. You spend the next 6 years gruelling away, filling out spreadsheets, and filling out forms. @Then you decide to retire too. They throw you a small party, hand you a cupcake and you pack up your cubicle.@ You decide to move. There is nothing really keeping you in Syracuse. So you decide to retire to Florida.@ You love it. It's all pretty flat so no more walking up hills. Especially after you take up cycling. Tim cycles everywhere, and buys a special wagon so he can take his cat with him.@ Three years go by and you are really in shape. The best shape of your life in fact. You decide to take a ride down by a lake.Y ou are cycling near the edge taking in the sights when suddenly there is a blur of motion. A 6 ft alligator grabs you by the leg and drags you into the water.Your cat watches helplessly from the wagon. The alligator shakes you a few times and you pass out, and drown in 2 feet of water. So ends the life of Tim.",
   39: "Paying for the little stuff is great. You basically never have to worry about paying for groceries, or anything you can pay for in cash, that you are not going to need to register. So Cars, houses, boats, planes, motorcycles, really anything that goes vrooom, and guns are out. @You spend years getting your money and paying for little stuff.It allows you to save some money and you can go on vacation every once in a while. No matter what you do you are careful not to leave records so they cannot get you for tax evasion for fraud.@ About 10 years go by like this and eventually Braxton goes under. It turns out the company was totally mismanaged and a few guys even get caught trying to launder money by buying extra printer paper and staples from a shell company they set up themselves. You however remain unnoticed. @You retire and lead a quiet life of bird watching and painting rocks. One day you notice a particularly rare bird, a Northern Shoveler in your apartment garden. As you position yourself to get a better picture of it to post onto your bird forum, you slip and crack your head against one of your painted rocks. This one looks like a long tailed duck. And so ends the life of Tim.",
-  40: "Oh now you are thinking like the real white collar criminal that you are. All that is left is to find a business that deals with a high volume of cash. Think hair salons, nail salons, game arcades, car washes, and liquor stores. After some careful research you decide that you are going to invest in all of them.You go around town as an “angel investor” and get partnerships in a few hair salons, and a bar. A year goes by and your dirty money has come out clean.With your partnerships you are actually making more money just the bit from Braxton. However the owner of one of your hair salons Loni is going over the books one night and notices your edits to the sales.She calls the police and hands over the books.This opens an investigation by the FBI.You are arrested by two agents, Weiss and Schwartz.They know that you are not getting the money on your own, and they suspect that it is coming from Braxton.And they inform you that they have already arrested Larry Perry.They make you a deal for less time if you testify against Larry.Do you take the deal?",
-  41: "You snoop on Kimberly. When she gets up to go to the bathroom, you take a look at her computer. She left her spread sheets for Braxton open and her google calendar. She has posted that she is going to get $10,000 from Braxton at the end of the month.@ Rookie move Kimberly.@ You take a screenshot and send it to yourself before she gets back. Then turn them over to Hank. He thanks you and calls the police. @They take the records and after looking them over arrest Kim. Later that week you see that some high up people at Braxton have also been arrested. A week after that you find out Kimberly has been killed in her cell, supposedly for ratting on the executives from Braxton.@ People around the office begin to whisper about you. They say you are responsible for Kimberly’s death. After a while no one will speak to you. You feel the workplace is hostile, so you quit.@ You end up working at another firm. You do not get any real opportunities there but they are all nice enough to you. You work there for another 23 years before you retire.@ You spend the rest of your days bird watching around the country. Then one day you try to get a better view of an Eastern Meadowlark that is across a ravine. You try desperately to make a few bird calls  and stand on the edge.The edge gives away and you fall to your death. So end the life of Tim.",
+  40: "Oh now you are thinking like the real white collar criminal that you are. All that is left is to find a business that deals with a high volume of cash. Think hair salons, nail salons, game arcades, car washes, and liquor stores. After some careful research you decide that you are going to invest in all of them.You go around town as an \"angel investor\" and get partnerships in a few hair salons, and a bar. A year goes by and your dirty money has come out clean.With your partnerships you are actually making more money just the bit from Braxton. However the owner of one of your hair salons Loni is going over the books one night and notices your edits to the sales.She calls the police and hands over the books.This opens an investigation by the FBI.You are arrested by two agents, Weiss and Schwartz.They know that you are not getting the money on your own, and they suspect that it is coming from Braxton.And they inform you that they have already arrested Larry Perry.They make you a deal for less time if you testify against Larry.Do you take the deal?",
+  41: "You snoop on Kimberly. When she gets up to go to the bathroom, you take a look at her computer. She left her spread sheets for Braxton open and her google calendar. She has posted that she is going to get $10,000 from Braxton at the end of the month.@ Rookie move Kimberly.@ You take a screenshot and send it to yourself before she gets back. Then turn them over to Hank. He thanks you and calls the police. @They take the records and after looking them over arrest Kim. Later that week you see that some high up people at Braxton have also been arrested. A week after that you find out Kimberly has been killed in her cell, supposedly for ratting on the executives from Braxton.@ People around the office begin to whisper about you. They say you are responsible for Kimberly's death. After a while no one will speak to you. You feel the workplace is hostile, so you quit.@ You end up working at another firm. You do not get any real opportunities there but they are all nice enough to you. You work there for another 23 years before you retire.@ You spend the rest of your days bird watching around the country. Then one day you try to get a better view of an Eastern Meadowlark that is across a ravine. You try desperately to make a few bird calls  and stand on the edge.The edge gives away and you fall to your death. So end the life of Tim.",
   42: "You mind your own business. Kimberly starts to come in dressed really nice. At lunch you hear her bragging about her new Bentley. That same day two FBI agents come in and carry her off. It turns out that she had been cooking the books for Braxton. After that nothing exciting happens. @You continue to work and not be noticed. @After 25 years you retire. 7 years after that you die in your sleep.So ends the life of Tim.",
-  43: "You go back and sure enough the cops are waiting for you. You are charged with murder, not self defense since the bullet wound is in the back of the man’s head. On top of that they charge you in connection to Braxton, and they offer no deal. You are tried and found guilty of all charges. @On your first day in jail you meet your bunk mates Curly and Moe. They seem nice. Until lights out that is. Curly holds you down and whispers condolences from Larry, as Moe begins to smother you with a pillow. You thrash a bit but after a couple minutes you stop moving, and eventually stop breathing. So ends the life of Tim.",
+  43: "You go back and sure enough the cops are waiting for you. You are charged with murder, not self defense since the bullet wound is in the back of the man's head. On top of that they charge you in connection to Braxton, and they offer no deal. You are tried and found guilty of all charges. @On your first day in jail you meet your bunk mates Curly and Moe. They seem nice. Until lights out that is. Curly holds you down and whispers condolences from Larry, as Moe begins to smother you with a pillow. You thrash a bit but after a couple minutes you stop moving, and eventually stop breathing. So ends the life of Tim.",
   44: "You decide to head west and make your way into the forests of Pennsylvania. You find a small cottage to live in and the landlord happily accepts cash. You have a few million on you and live pretty comfortably, under the identity Jeffery Jenkins, but everyone calls you JJ.@ You frequent a diner and the waitress Joann is really nice. Eventually you ask her out, and the two of you really hit things off. @You date for a year before she starts talking about marriage. You cannot really marry her because you do not have any official documentation as Jeffery Jenkins. Do you tell her what you have done?",
   45: "You tell Joann the truth. Oddly she does not seem to mind at all. In fact she kind of likes you more because you are a real bad boy. @ The two of you spend the rest of your life together until one day you choke on a piece of pie at the diner, and die. Joann takes the money you left and spends it poorly. She gets arrested and reveals who you were. @It makes all of the head lines in every major news station. Infamous accountant who broke bad, choked to death on pie. So ends the life of Tim.",
   46: "Every time Joann brings up marriage you skirt around the subject. Eventually she has enough of it and leaves you. @You try to continue to go to the diner but the cook is best friends with Joann and makes sure your food is inedible. @You spend the rest of your days eating terrible food alone. Then at the age of 82, you die in your sleep. So ends the life of Tim.",
-  47: "You take all the accounts Kimberly was working and give them to other accounts, and give her the worst ones. She is furious and quits. It turns out that she was actually a good accountant.All the other accountants really mess up her old accounts, and because they have no rapport with the companies, they can’t fix it.The companies take their business elsewhere.Within a year your accounting firm goes belly up and you are jobless. You also lose your apartment and end up homeless.Another homeless guy named Tito takes pity on you and lets you and your cat share his box.He talks to himself but is otherwise fine. That winter it gets really cold, and you die of hypothermia.So ends the life of Tim.",
-  48: "You find a new client management system that lets accountants accountants email their clients from the system instead of tabbing over and opening email. Revolutionary! You work there for another 20 years before retiring.They give you a cupcake and say how great you are and thank you for all your work.You feel so appreciated.Then you immediately die.Heart attack.Good timing too.Your life could not have gotten any better.So ends the life of Tim.",
+  47: "You take all the accounts Kimberly was working and give them to other accounts, and give her the worst ones. She is furious and quits. It turns out that she was actually a good accountant.All the other accountants really mess up her old accounts, and because they have no rapport with the companies, they can't fix it.The companies take their business elsewhere.Within a year your accounting firm goes belly up and you are jobless. You also lose your apartment and end up homeless.Another homeless guy named Tito takes pity on you and lets you and your cat share his box.He talks to himself but is otherwise fine. That winter it gets really cold, and you die of hypothermia.So ends the life of Tim.",
+  48: "You find a new client management system that lets accountants email their clients from the system instead of tabbing over and opening email. Revolutionary! You work there for another 20 years before retiring. They give you a cupcake and say how great you are and thank you for all your work. You feel so appreciated.Then you immediately die. Heart attack. Good timing too. Your life could not have gotten any better. So ends the life of Tim.",
   49: "You tackle the robber and wrestle the gun from him. You hold him down long enough for the police to come and arrest him. @The owner is super grateful and introduces himself and Nacho. You get to talking and explain that you have lost your job. And Nacho offers you a job at the pawnshop. Do you take it?",
-  50: "You walk out here two pops and a thud. The robber runs out behind you with jewelry spilling out of his pockets. @The police come by and take a statement from you. As you walk home you can’t get the sound of those two pops and the thud out of your head. It haunts you. And it haunts you for the rest of your life. @You never work as an accountant again, but you do get a job as a server at IHOP. It is not much, but the tips keep the lights on, and you get free meals when you work. One night you are leaving for the night when a man approaches you. @It is the same man from the pawnshop. He pulls a gun and demands your wallet.Y ou don’t produce it fast enough and he shoots you. @You hit the ground with a thud and the lights in the parking lot fade to black. So ends the life of Tim.",
+  50: "You walk out here two pops and a thud. The robber runs out behind you with jewelry spilling out of his pockets. @The police come by and take a statement from you. As you walk home you can't get the sound of those two pops and the thud out of your head. It haunts you. And it haunts you for the rest of your life. @You never work as an accountant again, but you do get a job as a server at IHOP. It is not much, but the tips keep the lights on, and you get free meals when you work. One night you are leaving for the night when a man approaches you. @It is the same man from the pawnshop. He pulls a gun and demands your wallet.Y ou don't produce it fast enough and he shoots you. @You hit the ground with a thud and the lights in the parking lot fade to black. So ends the life of Tim.",
   51: "You take the job. It turns out you are great at it. You do a lot of research and get really good at making people fair offers. They are all surprised by how much knowledge you have over so many different items. Nacho wants to retire and asks if you want to take over. You tell him that you do. One day you get a call from the History Channel.They want to make another Pawn Stars series. You take them up on their offer and soon you are making a lot of money.@ After 10 seasons you call it quits from TV and decide to sell the shop. @After that you retire to Fiji. You meet a nice lady named Lisa and the two of you get married.You have a very happy life together. At the age of 86 you die in your sleep. So ends the life of Tim.",
-  52: "You don’t take the job. Unfortunately no one else in town offers you one. Or in the surrounding area. You end up as a drifter. Moving from town to town. State to state. @While you end up enjoying the drifter lifestyle it is not the most stable. You are trying to make your way to California and end up having your car break down in Death Valley during the summer.It is 120 degrees Fahrenheit.The tow truck does not make it before you die of heat stroke.So ends the life of Tim. ",
-  53: "Being the practical man that you are training seems like a good idea. You head off to the Bermuda Triangle to seek out the Warlock Queen. You do a quick search of the internet and find out she is located on a small island. She advertises so it was not that hard to find her.@ It takes quite a bit of planes, boats, and automobiles to get you there but you make it. The island is a small mountain, and at it’s peak is a large castle. Strange for Bermuda, but fitting for a witch. @As you walk up to the castle the drawbridge begins to lower. You hear a loud cackling and black smoke billows out from behind the drawbridge. Then it suddenly condenses to the shape of a pretty, young woman, dressed in a cloak, and a crown atop her head. @I am the Warlock Queen, she says, and you must be Tim. The genie told me you would probably be coming by.@ First lesson of magic, do not shape shift into cats. They are too self centered and you will lose all context of yourself and will not be able to change back. @Second lesson of magic is to cast a spell you have to imagine exactly what is happening. The more specific you are the better the spell. @For example if you are putting out a fire you can try to imagine it going out, but you will need to expend a lot of mental energy. Or you can imagine the air moving away from it and the fire being suffocated. @The clearer you can be on what is supposed to happen the easier it is for the magic to take.@ Third lesson of magic, have fun!@ And with that the drawbridge began to close. However out of nowhere a large bolt of lightning strikes the castle, dropping the drawbridge. You look up and see a man standing on a cloud wielding a thunderbolt in each hand. @He calls down, Warlock Queen, it is I Hector. Your reign has gone on for too long. I demand a trial by combat!@ She returns in another billow of smoke. And I, she says, appoint Tim as my champion. @Do you accept?",
+  52: "You don't take the job. Unfortunately no one else in town offers you one. Or in the surrounding area. You end up as a drifter. Moving from town to town. State to state. @While you end up enjoying the drifter lifestyle it is not the most stable. You are trying to make your way to California and end up having your car break down in Death Valley during the summer. It is 120 degrees Fahrenheit. The tow truck does not make it before you die of heat stroke. So ends the life of Tim. ",
+  53: "Being the practical man that you are training seems like a good idea. You head off to the Bermuda Triangle to seek out the Warlock Queen. You do a quick search of the internet and find out she is located on a small island. She advertises so it was not that hard to find her.@ It takes quite a bit of planes, boats, and automobiles to get you there but you make it. The island is a small mountain, and at it's peak is a large castle. Strange for Bermuda, but fitting for a witch. @As you walk up to the castle the drawbridge begins to lower. You hear a loud cackling and black smoke billows out from behind the drawbridge. Then it suddenly condenses to the shape of a pretty, young woman, dressed in a cloak, and a crown atop her head. @I am the Warlock Queen, she says, and you must be Tim. The genie told me you would probably be coming by.@ First lesson of magic, do not shape shift into cats. They are too self centered and you will lose all context of yourself and will not be able to change back. @Second lesson of magic is to cast a spell you have to imagine exactly what is happening. The more specific you are the better the spell. @For example if you are putting out a fire you can try to imagine it going out, but you will need to expend a lot of mental energy. Or you can imagine the air moving away from it and the fire being suffocated. @The clearer you can be on what is supposed to happen the easier it is for the magic to take.@ Third lesson of magic, have fun!@ And with that the drawbridge began to close. However out of nowhere a large bolt of lightning strikes the castle, dropping the drawbridge. You look up and see a man standing on a cloud wielding a thunderbolt in each hand. @He calls down, Warlock Queen, it is I Hector. Your reign has gone on for too long. I demand a trial by combat!@ She returns in another billow of smoke. And I, she says, appoint Tim as my champion. @Do you accept?",
   54: "Training smaining! Who needs it? You are Tim and you have this whole wizard thing in the bag. @You raise your hands and imagine fire, and boom they are on fire. You stick your hand out and imagine the fire traveling from your hand to the garbage. And boom the garbage can is on fire. You try to unimagine it being on fire but that does not seem to work so you get out of there. @Fire is all cool and all but what is really cool? Shape shifting! You close your eyes and imagine yourself as the most majestic animal, a house cat. @When you open your eyes you notice that you are much smaller. You look down and see little paws where you used to have hands. It worked! You are a cat. Now to try to be Tim again. You close your eyes and imagine yourself as well, yourself again.It does not work this time. It appears that you are trapped as a common house cat. @You spend a few days running around as a cat looking for scraps, hunting for small critters. @One day you are sunning yourself on a bench trying to figure out how to become a human again when a woman catches you. She throws you in a carrier and puts you in the car. She takes you out and gives you to a man in a long white coat who gives you a treat. You like the treat. Then he takes you in a room and knocks you out with some gas.@ When you wake up you have a cone of shame, and are missing your balls. However it appears that the woman intends to keep you. You stay with her for the rest of your cat lifespan, another 7 years or so. You were middle aged after all. Then you die. She took a liking to you and had you stuffed and placed on the mantle. So ends the life of Tim.",
-  55: "You are slightly timid but you do accept. @Hector immediately throws his thunderbolts down to smite you, but you move out of the way in time. He begins to conjure more. @You think of what you can imagine detailed enough to stop him, and suddenly an idea comes to mind. @First you think of a couple of receipts going missing.Then you imagine a slight change to a W2 form.And next some tax documents reported with zeros in different decimal places.Then you think of all of the logistics involved of getting mail to a man standing on a cloud. And poof just like that Hector is standing on his cloud with an official audit from the IRS.@ Nooooooo, he screams.This cannot be happening.I was just going to refinance my lair. As he is distracted you imagine him being turned into a cat. @With a distressed meow Hector falls from his cloud. The Warlock Queen summons a cushion of air and he bounces off of it into her arms, hissing. @Who is so cute? She asks. First order of business you are getting neutered. Can’t have any more cats around here. It’s bad of the indiginous species. @Second, thank you Tim! I knew you could do it. @After that the Warlock Queen gives you more lessons and eventually lets you know her real name. Tabitha. You and Tabitha end up forming a relationship and eventually falling in love.The two of you are married in an old Etruscan ruin, and spend the rest of immortality together, as the Warlock Queen and her Consort, Tim. So continues the life of Tim.",
-  56: "You decline. So the Warlock Queen decides to do it herself. @She turns back into a cloud of smoke and flies up at Hector. He begins to choke, and finds his lightning useless against a cloud. He suffocates and falls to the ground with a gut wrenching thud, completely lifeless. @Then the Queen reappears beside you. @Well the magic lesson is over. And you refused a direct order from your queen.vFor that you must be punished. 40 years dungeon no trial. You spend the next 40 years chained up in a dungeon. She has many anti-magic spells in place so you cannot escape.@ After your 40 years are up she sets you free, and you buy a plane ticket back to the United States. On your way back the plane loses both of it’s engines and crashes into the water never to be seen from again. So ends the life of Tim."
+  55: "You are slightly timid but you do accept. @Hector immediately throws his thunderbolts down to smite you, but you move out of the way in time. He begins to conjure more. @You think of what you can imagine detailed enough to stop him, and suddenly an idea comes to mind. @First you think of a couple of receipts going missing.Then you imagine a slight change to a W2 form.And next some tax documents reported with zeros in different decimal places.Then you think of all of the logistics involved of getting mail to a man standing on a cloud. And poof just like that Hector is standing on his cloud with an official audit from the IRS.@ Nooooooo, he screams.This cannot be happening.I was just going to refinance my lair. As he is distracted you imagine him being turned into a cat. @With a distressed meow Hector falls from his cloud. The Warlock Queen summons a cushion of air and he bounces off of it into her arms, hissing. @Who is so cute? She asks. First order of business you are getting neutered. Can't have any more cats around here. It's bad of the indiginous species. @Second, thank you Tim! I knew you could do it. @After that the Warlock Queen gives you more lessons and eventually lets you know her real name. Tabitha. You and Tabitha end up forming a relationship and eventually falling in love.The two of you are married in an old Etruscan ruin, and spend the rest of immortality together, as the Warlock Queen and her Consort, Tim. So continues the life of Tim.",
+  56: "You decline. So the Warlock Queen decides to do it herself. @She turns back into a cloud of smoke and flies up at Hector. He begins to choke, and finds his lightning useless against a cloud. He suffocates and falls to the ground with a gut wrenching thud, completely lifeless. @Then the Queen reappears beside you. @Well the magic lesson is over. And you refused a direct order from your queen.vFor that you must be punished. 40 years dungeon no trial. You spend the next 40 years chained up in a dungeon. She has many anti-magic spells in place so you cannot escape.@ After your 40 years are up she sets you free, and you buy a plane ticket back to the United States. On your way back the plane loses both of it's engines and crashes into the water never to be seen from again. So ends the life of Tim."
 };
 var choices = {
   1: [{
@@ -258,7 +423,7 @@ var choices = {
   }, {
     'Wish for your job back': 29
   }, {
-    'Wish for wizard powers like Dr.Strange': 30
+    'Wish for wizard powers like Dr. Strange': 30
   }, {
     'Wish for a billion dollars': 31
   }, {
@@ -301,7 +466,7 @@ var choices = {
   37: [{
     "Make Kimberly's life suck": 47
   }, {
-    "Look into a new client management system": 48
+    'Look into a new client management system': 48
   }],
   38: [],
   39: [],
@@ -342,10 +507,10 @@ var choices = {
 
 /***/ }),
 
-/***/ "./frontend/game.jsx":
-/*!***************************!*\
-  !*** ./frontend/game.jsx ***!
-  \***************************/
+/***/ "./main.jsx":
+/*!******************!*\
+  !*** ./main.jsx ***!
+  \******************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -353,7 +518,9 @@ var choices = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _choices__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./choices */ "./frontend/choices.js");
+/* harmony import */ var _frontend_game_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./frontend/game.jsx */ "./frontend/game.jsx");
+/* harmony import */ var _frontend_stories_lifeOfTim__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/stories/lifeOfTim */ "./frontend/stories/lifeOfTim.js");
+/* harmony import */ var _frontend_stories_lifeOfHoward__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/stories/lifeOfHoward */ "./frontend/stories/lifeOfHoward.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -377,125 +544,103 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
- // import {pages} from './choices';
 
-var Game = /*#__PURE__*/function (_React$Component) {
-  _inherits(Game, _React$Component);
 
-  var _super = _createSuper(Game);
 
-  function Game(props) {
+var STORIES = [{
+  key: 'tim',
+  title: _frontend_stories_lifeOfTim__WEBPACK_IMPORTED_MODULE_2__["title"],
+  pages: _frontend_stories_lifeOfTim__WEBPACK_IMPORTED_MODULE_2__["pages"],
+  choices: _frontend_stories_lifeOfTim__WEBPACK_IMPORTED_MODULE_2__["choices"]
+}, {
+  key: 'howard',
+  title: _frontend_stories_lifeOfHoward__WEBPACK_IMPORTED_MODULE_3__["title"],
+  pages: _frontend_stories_lifeOfHoward__WEBPACK_IMPORTED_MODULE_3__["pages"],
+  choices: _frontend_stories_lifeOfHoward__WEBPACK_IMPORTED_MODULE_3__["choices"]
+}];
+
+var Main = /*#__PURE__*/function (_React$Component) {
+  _inherits(Main, _React$Component);
+
+  var _super = _createSuper(Main);
+
+  function Main(props) {
     var _this;
 
-    _classCallCheck(this, Game);
+    _classCallCheck(this, Main);
 
     _this = _super.call(this, props);
     _this.state = {
-      page: 1,
-      pages: _choices__WEBPACK_IMPORTED_MODULE_1__["pages"],
-      choices: _choices__WEBPACK_IMPORTED_MODULE_1__["choices"],
-      checked: false
+      storyIndex: 0
     };
-    _this.handleCheck = _this.handleCheck.bind(_assertThisInitialized(_this));
+    _this.handleComplete = _this.handleComplete.bind(_assertThisInitialized(_this));
+    _this.handlePrev = _this.handlePrev.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Game, [{
-    key: "update",
-    value: function update() {
-      var _this2 = this;
+  _createClass(Main, [{
+    key: "handleComplete",
+    value: function handleComplete() {
+      var next = this.state.storyIndex + 1;
 
-      return function (e) {
-        return _this2.setState({
-          page: e.target.value
+      if (next < STORIES.length) {
+        this.setState({
+          storyIndex: next
         });
-      };
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
     }
   }, {
-    key: "handleCheck",
-    value: function handleCheck() {
-      var _this3 = this;
+    key: "handlePrev",
+    value: function handlePrev() {
+      var prev = this.state.storyIndex - 1;
 
-      (function (e) {
-        return _this3.setState({
-          checked: true
+      if (prev >= 0) {
+        this.setState({
+          storyIndex: prev
         });
-      });
-    }
-  }, {
-    key: "restart",
-    value: function restart() {
-      this.setState({
-        page: 1
-      });
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
-
-      var count = 0;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "game"
-      }, this.state.pages[this.state.page].split('@').map(function (pageOn) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "description"
-        }, pageOn);
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        value: this.state.page
-      }, this.state.choices[this.state.page].map(function (choice) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: count++,
-          className: "options-div"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          className: "options",
-          type: "radio",
-          value: Object.values(choice),
-          checked: _this4.state.checked,
-          onChange: _this4.update(),
-          onClick: _this4.handleCheck()
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          htmlFor: ""
-        }, Object.keys(choice)));
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this4.restart();
-        }
-      }, "Restart"));
+      var storyIndex = this.state.storyIndex;
+      var story = STORIES[storyIndex];
+      var nextStory = STORIES[storyIndex + 1];
+      var prevStory = STORIES[storyIndex - 1];
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "title"
+      }, story.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "author"
+      }, "By Ethan Wright"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_game_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        key: story.key,
+        pages: story.pages,
+        choices: story.choices,
+        nextStoryTitle: nextStory ? nextStory.title : null,
+        onComplete: nextStory ? this.handleComplete : null,
+        prevStoryTitle: prevStory ? prevStory.title : null,
+        onPrev: prevStory ? this.handlePrev : null
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://www.linkedin.com/in/ethan-wright-91a75270/"
+      }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/wrightet"
+      }, "GitHub")));
     }
   }]);
 
-  return Game;
+  return Main;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (Game);
-
-/***/ }),
-
-/***/ "./main.jsx":
-/*!******************!*\
-  !*** ./main.jsx ***!
-  \******************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _frontend_game_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./frontend/game.jsx */ "./frontend/game.jsx");
-
-
-
-var Main = function Main() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_game_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "footer-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://www.linkedin.com/in/ethan-wright-91a75270/"
-  }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/wrightet"
-  }, "GitHub")));
-};
 
 /* harmony default export */ __webpack_exports__["default"] = (Main);
 

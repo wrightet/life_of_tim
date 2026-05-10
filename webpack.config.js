@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-    context: __dirname,
     entry: "./tim.jsx",
     output: {
         path: path.resolve(__dirname),
